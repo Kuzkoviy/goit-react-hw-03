@@ -56,7 +56,7 @@ function ContactForm({onAdd}) {
              />
              <ErrorMessage
              name="number"/>
-            <button type="submit">Add contact</button>
+            <button type="submit" >Add contact</button>
           </Form>
           )}
         }
