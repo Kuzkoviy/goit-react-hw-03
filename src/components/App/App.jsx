@@ -22,7 +22,7 @@ function App() {
     })
   }
 
-
+  // Видалення контактів
   const deleteContact = (contactId) => {
     setContacts((prevContacts) => {
        return prevContacts.filter(contact => contact.id !== contactId);
@@ -30,12 +30,17 @@ function App() {
   }
 
 
+  const [filter, setFilter] = useState('');
+
+
+  const visibleContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
+
   return (
     <div>
         <h1>Phonebook</h1>
         <ContactForm onAdd = {addContact}/>
-        <SearchBox/>
-        <ContactList contacts={contacts} onDelete={deleteContact}/>
+        <SearchBox value={filter} onFilter={setFilter}/>
+        <ContactList contacts={visibleContacts} onDelete={deleteContact}/>
     </div>
   )
 }

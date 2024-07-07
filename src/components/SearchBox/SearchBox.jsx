@@ -1,7 +1,7 @@
 import {useId} from 'react'
 
 
-function SearchBox() {
+function SearchBox({filter, onFilter }) {
 
   const id = useId();
 
@@ -9,7 +9,8 @@ function SearchBox() {
   return (
     <div>
       <label htmlFor={`result-${id}`}>Find contacts by name</label>
-      <input type="text" id={`result-${id}`}/>
+      <input type="text" id={`result-${id}`} 
+      value={filter} onChange={event => onFilter(event.target.value)}/>
     </div>
   )
 }
