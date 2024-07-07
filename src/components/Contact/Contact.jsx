@@ -2,10 +2,13 @@
 
 
 
-function Contact() {
+function Contact({data: {name, number}}) {
   return (
-    <div>Contact</div>
+    <div>
+      <p>{name}</p>
+      <p>{number}</p>
+    </div>
   )
 }
 
-export default Contact
+export default Contact;

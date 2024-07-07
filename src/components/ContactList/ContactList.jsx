@@ -1,10 +1,16 @@
+import Contact from "../Contact/Contact";
 
 
-
-
-export default function ContactList() {
+export default function ContactList({ contacts }) {
   return (
-    <div>ContactList</div>
+    <div>
+      <ul>
+        {contacts.map((contact) => (
+          <li key={contact.id}>
+            <Contact data={contact} />
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
-
