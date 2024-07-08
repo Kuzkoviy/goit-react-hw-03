@@ -12,7 +12,19 @@ import { nanoid } from 'nanoid'
 
 function App() {
 
-  const [contacts, setContacts] = useState(initialContacts);
+  const [contacts, setContacts] = useState(() => {
+    const savedContacts = localStorage.getItem('saved-contacts');
+    if(savedContacts) {
+      return JSON.parse(savedContacts);
+    }
+
+    return initialContacts;
+  });
+
+
+  useEffect(() => {
+    localStorage.setItem('saved-contacts', JSON.stringify(contacts))
+  }, [contacts]);
   
   // Додавання контактів
   const addContact = (newContact) => {
